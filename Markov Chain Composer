@@ -1,0 +1,25 @@
+import random
+text = """
+python is easy to learn
+python is powerful
+python is useful for programming
+programming is fun
+learning python is fun
+"""
+words = text.lower().split()
+chain = {}
+for i in range(len(words) - 1):
+    current = words[i]
+    next_word = words[i + 1]
+    if current not in chain:
+        chain[current] = []
+    chain[current].append(next_word)
+word = random.choice(words)
+result = [word]
+for _ in range(20):
+    if word not in chain:
+        break
+    word = random.choice(chain[word])
+    result.append(word)
+print("===== GENERATED TEXT =====")
+print(" ".join(result))
