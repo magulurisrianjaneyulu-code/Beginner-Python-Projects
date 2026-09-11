@@ -1,0 +1,20 @@
+import random
+size = 5
+mines = 5
+board = [["0" for _ in range(size)] for _ in range(size)]
+mine_positions = set()
+while len(mine_positions) < mines:
+    row = random.randint(0, size - 1)
+    col = random.randint(0, size - 1)
+    mine_positions.add((row, col))
+for row, col in mine_positions:
+    board[row][col] = "*"
+print("===== MINESWEEPER =====")
+for row in board:
+    print(" ".join(row))
+guess_row = int(input("Enter row (0-4): "))
+guess_col = int(input("Enter column (0-4): "))
+if (guess_row, guess_col) in mine_positions:
+    print("💣 Boom! You hit a mine!")
+else:
+    print("✅ Safe!")
