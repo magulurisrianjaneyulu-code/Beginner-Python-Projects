@@ -1,0 +1,37 @@
+from PIL import Image, ImageFilter
+# Open the image
+image = Image.open("input.jpg")
+print("===== PHOTO PROCESSING PROJECT =====")
+print("Original size:", image.size)
+# 1. Resize
+resized = image.resize((800, 600))
+resized.save("output/resized.jpg")
+print("✓ Resized image saved")
+# 2. Grayscale
+gray = image.convert("L")
+gray.save("output/grayscale.jpg")
+print("✓ Grayscale image saved")
+# 3. Rotate
+rotated = image.rotate(90, expand=True)
+rotated.save("output/rotated.jpg")
+print("✓ Rotated image saved")
+# 4. Blur
+blurred = image.filter(ImageFilter.BLUR)
+blurred.save("output/blurred.jpg")
+print("✓ Blurred image saved")
+# 5. Sharpen
+sharp = image.filter(ImageFilter.SHARPEN)
+sharp.save("output/sharpened.jpg")
+print("✓ Sharpened image saved")
+# 6. Flip horizontally
+flipped = image.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+flipped.save("output/flipped.jpg")
+print("✓ Flipped image saved")
+# 7. Crop
+width, height = image.size
+cropped = image.crop(
+    (0, 0, width // 2, height // 2)
+)
+cropped.save("output/cropped.jpg")
+print("✓ Cropped image saved")
+print("\nAll photo processing completed!")
