@@ -1,0 +1,17 @@
+import random
+print("Think of a number between 1 and 100.")
+low = 1
+high = 100
+while low <= high:
+    guess = (low + high) // 2
+    print("My guess is:", guess)
+    answer = input("Is it high, low, or correct? ").lower()
+    if answer == "correct":
+        print("🎉 I guessed your number!")
+        break
+    elif answer == "high":
+        high = guess - 1
+    elif answer == "low":
+        low = guess + 1
+    else:
+        print("Please enter high, low, or correct.")
